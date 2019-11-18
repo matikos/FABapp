@@ -16,16 +16,20 @@ enum FruitError: Error {
 struct FruitManager {
     
     let fruitURL: URL
+    var timeQuerry:TimeInterval
     
     init() {
         let fruitString = "https://raw.githubusercontent.com/fmtvp/recruit-test-data/master/data.json"
         guard let fruitURL = URL(string: fruitString) else {fatalError()}
         self.fruitURL = fruitURL
+        self.timeQuerry = 0
     }
     
     
-    
-    func performRequest(completion: @escaping(Result<[Fruit], FruitError>)-> Void) {
+    mutating func performRequest(completion: @escaping(Result<[Fruit], FruitError>)-> Void) {
+        var request = URLRequest(url: fruitURL )
+        request.httpMethod = "GET"
+        timeQuerry = request.timeoutInterval
         let dataTask = URLSession.shared.dataTask(with: fruitURL) {data,_,_ in
             
             guard let safeData = data else {

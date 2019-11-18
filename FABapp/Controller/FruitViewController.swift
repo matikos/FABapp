@@ -26,34 +26,52 @@ class FruitViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitList.dataSource = self
-        let fruitManager = FruitManager()
+        var fruitManager = FruitManager()
         fruitManager.performRequest {[weak self] result in
             switch result{
             case .failure(let error):
                 print(error)
-                print("Hello, Line 34.")
+                print("error loading data on line 34")
             case .success(let fruits):
                 self?.listOfFruits = fruits
-                print("Hello, Line 37.")
+                print("success loading data on line 37")
+            }
+            let loadReport = LoadReport(fruitManager.timeQuerry)
+            loadReport.report { result in
+                switch result{
+                case .failure(let error):
+                    print(error)
+                case .success(let success):
+                    print(success)
+                }
             }
         }
-        
+
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to reload from API")
         refresher.addTarget(self, action: #selector(FruitViewController.invokeReload), for: UIControl.Event.valueChanged)
         fruitList.addSubview(refresher)
     }
-    
+         //MARK: - Refresher
     @objc func invokeReload () {
-        let fruitManager = FruitManager()
+        var fruitManager = FruitManager()
         fruitManager.performRequest {[weak self] result in
             switch result{
             case .failure(let error):
                 print(error)
-                print("error on line 53.")
+                print("error  with refresh on line 62.")
             case .success(let fruits):
                 self?.listOfFruits = fruits
-                print("success on line 56.")
+                print("success with refresh on line 65.")
+            }
+        }
+        let loadReport = LoadReport(fruitManager.timeQuerry)
+        loadReport.report { result in
+            switch result{
+            case .failure(let error):
+                print(error)
+            case .success(let success):
+                print(success)
             }
         }
         fruitList.reloadData()
@@ -95,8 +113,4 @@ class FruitViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    
-    
 }
-
-

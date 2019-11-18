@@ -22,6 +22,8 @@
 		657535CD237E26FE00C8381E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657535CB237E26FE00C8381E /* DetailViewController.swift */; };
 		659B3082238212CC00AE66AF /* FABappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657535A4237DC0FE00C8381E /* FABappTests.swift */; };
 		659B30842382F10B00AE66AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659B30832382F10B00AE66AF /* LaunchScreen.storyboard */; };
+		659B308623833A0A00AE66AF /* LoadReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659B308523833A0A00AE66AF /* LoadReport.swift */; };
+		659B308723833A0A00AE66AF /* LoadReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659B308523833A0A00AE66AF /* LoadReport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,7 @@
 		657535C8237E241800C8381E /* FruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitViewController.swift; sourceTree = "<group>"; };
 		657535CB237E26FE00C8381E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		659B30832382F10B00AE66AF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		659B308523833A0A00AE66AF /* LoadReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadReport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,7 @@
 			children = (
 				657535B5237E01CB00C8381E /* FruitData.swift */,
 				657535BB237E025200C8381E /* FruitManager.swift */,
+				659B308523833A0A00AE66AF /* LoadReport.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +248,7 @@
 				657535C9237E241800C8381E /* FruitViewController.swift in Sources */,
 				657535B6237E01CB00C8381E /* FruitData.swift in Sources */,
 				6575358B237DC0FB00C8381E /* AppDelegate.swift in Sources */,
+				659B308623833A0A00AE66AF /* LoadReport.swift in Sources */,
 				657535BC237E025200C8381E /* FruitManager.swift in Sources */,
 				6575358D237DC0FB00C8381E /* SceneDelegate.swift in Sources */,
 				657535CC237E26FE00C8381E /* DetailViewController.swift in Sources */,
@@ -258,6 +263,7 @@
 				659B3082238212CC00AE66AF /* FABappTests.swift in Sources */,
 				657535BD237E025200C8381E /* FruitManager.swift in Sources */,
 				657535CD237E26FE00C8381E /* DetailViewController.swift in Sources */,
+				659B308723833A0A00AE66AF /* LoadReport.swift in Sources */,
 				657535B7237E01CB00C8381E /* FruitData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
