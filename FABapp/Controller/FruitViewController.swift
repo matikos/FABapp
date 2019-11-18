@@ -50,10 +50,10 @@ class FruitViewController: UIViewController, UITableViewDelegate, UITableViewDat
             switch result{
             case .failure(let error):
                 print(error)
-                print("error on line 89.")
+                print("error on line 53.")
             case .success(let fruits):
                 self?.listOfFruits = fruits
-                print("success on line 92.")
+                print("success on line 56.")
             }
         }
         fruitList.reloadData()
@@ -73,6 +73,8 @@ class FruitViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         cell.textLabel?.text = listOfFruits[indexPath.row].type
+        
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
