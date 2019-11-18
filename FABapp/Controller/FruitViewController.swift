@@ -10,7 +10,7 @@ import UIKit
 
 
 class FruitViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var fruitList: UITableView!
     
     var listOfFruits = [Fruit]() {
@@ -37,10 +37,27 @@ class FruitViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 print("Hello, Line 37.")
             }
         }
+        
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to reload from API")
         refresher.addTarget(self, action: #selector(FruitViewController.invokeReload), for: UIControl.Event.valueChanged)
         fruitList.addSubview(refresher)
+    }
+    
+    @objc func invokeReload () {
+        let fruitManager = FruitManager()
+        fruitManager.performRequest {[weak self] result in
+            switch result{
+            case .failure(let error):
+                print(error)
+                print("error on line 89.")
+            case .success(let fruits):
+                self?.listOfFruits = fruits
+                print("success on line 92.")
+            }
+        }
+        fruitList.reloadData()
+        refresher.endRefreshing()
     }
     
     //MARK: - TableView
@@ -51,19 +68,19 @@ class FruitViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listOfFruits.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         cell.textLabel?.text = listOfFruits[indexPath.row].type
         
-        
         return cell
     }
     
+
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // fruitList.deselectRow(at: indexPath, animated: true)
-        
+        // fruitList.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "ToDetail", sender: self)
     }
     
@@ -76,25 +93,8 @@ class FruitViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    private func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.accessoryType = .disclosureIndicator
-    }
     
-    @objc func invokeReload () {
-        let fruitManager = FruitManager()
-        fruitManager.performRequest {[weak self] result in
-            switch result{
-            case .failure(let error):
-                print(error)
-                print("Hello, Line 85.")
-            case .success(let fruits):
-                self?.listOfFruits = fruits
-                print("Hello, Line 88.")
-            }
-        }
-        fruitList.reloadData()
-        refresher.endRefreshing()
-    }
+    
 }
 
 

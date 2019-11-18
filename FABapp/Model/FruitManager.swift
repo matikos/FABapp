@@ -24,7 +24,7 @@ struct FruitManager {
     }
     
     
-
+    
     func performRequest(completion: @escaping(Result<[Fruit], FruitError>)-> Void) {
         let dataTask = URLSession.shared.dataTask(with: fruitURL) {data,_,_ in
             
@@ -32,19 +32,19 @@ struct FruitManager {
                 completion(.failure(.noDataAvailable))
                 return
             }
-                
+            
             do {
                 let decoder = JSONDecoder()
                 let decodedData = try decoder.decode(FruitData.self, from: safeData)
                 let decodedFruit = decodedData.fruit
-
+                
                 completion(.success(decodedFruit))
-                print ("success on line 46")
-                } catch {
-                    completion(.failure(.canNotProccessData))
-                    print("error")
-                }
+                print ("success on line 42")
+            } catch {
+                completion(.failure(.canNotProccessData))
+                print("error on line 45")
             }
+        }
         dataTask.resume()
     }
 }
