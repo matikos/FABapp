@@ -102,7 +102,6 @@
 				65753596237DC0FD00C8381E /* Assets.xcassets */,
 				6575359B237DC0FD00C8381E /* Info.plist */,
 				65753593237DC0FB00C8381E /* FABapp.xcdatamodeld */,
-				659B30832382F10B00AE66AF /* LaunchScreen.storyboard */,
 			);
 			path = FABapp;
 			sourceTree = "<group>";
@@ -120,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				65753590237DC0FB00C8381E /* Main.storyboard */,
+				659B30832382F10B00AE66AF /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";

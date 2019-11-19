@@ -15,12 +15,4 @@ class when_app_loads: XCTestCase {
         
     }
     
-    func test_fruitURLIsValidURL() {
-    
-       
-    }
-
-    
- 
-
 }
